@@ -1,24 +1,24 @@
 #fstab file by lopestom for Blackview BV9200_RU - BV9200_S1_221231 - R08_20221231
-/system		        ext4	/dev/block/mapper/system              flags=backup=1;wipeingui;slotselect;logical;display="System"
+/system		          ext4	/dev/block/mapper/system               flags=backup=1;wipeingui;slotselect;logical;display="System"
 /vendor             ext4    /dev/block/mapper/vendor             flags=backup=1;wipeingui;logical;display="Vendor";slotselect
-/product            ext4    /dev/block/mapper/product             flags=backup=1;wipeingui;logical;display="Product";slotselect
+/product            ext4    /dev/block/mapper/product            flags=backup=1;wipeingui;logical;display="Product";slotselect
 
 # Images
-/system_image	    emmc  	/dev/block/mapper/system_a            flags=backup=1;flashimg=1;slotselect;logical;display="System_Image_a"
-/vendor_image	    emmc  	/dev/block/mapper/vendor_a             flags=backup=1;flashimg=1;slotselect;logical;display="Vendor_Image_a"
-/product_image	    emmc	/dev/block/mapper/product_a             flags=backup=1;flashimg=1;slotselect;logical;display="Product_Image_a"
+/system_image	      emmc  	/dev/block/mapper/system             flags=backup=1;flashimg=1;slotselect;logical;display="System_Image_a"
+/vendor_image	      emmc  	/dev/block/mapper/vendor             flags=backup=1;flashimg=1;slotselect;logical;display="Vendor_Image_a"
+/product_image	    emmc	/dev/block/mapper/product              flags=backup=1;flashimg=1;slotselect;logical;display="Product_Image_a"
 
 # Core Partitions
-/metadata             ext4    /dev/block/by-name/metadata         flags=backup=1;display="metadata";mounttodecrypt
+/metadata           ext4    /dev/block/by-name/metadata         flags=backup=1;display="metadata";mounttodecrypt
 
 # Common partition
 /data            f2fs    /dev/block/by-name/userdata            flags=encryptable=/dev/block/by-name/metadata;fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
-/vendor_boot	emmc	/dev/block/by-name/vendor_boot		 flags=display="Vendor Boot";backup=1;flashimg=1;slotselect
+/vendor_boot	emmc	/dev/block/by-name/vendor_boot		          flags=display="Vendor Boot";backup=1;flashimg=1;slotselect
 /boot            emmc    /dev/block/by-name/boot               flags=backup=1;display="Boot";flashimg=1;slotselect
 /dtbo            emmc    /dev/block/by-name/dtbo               flags=backup=1;display="Dtbo";flashimg=1;slotselect
 /persist         ext4    /dev/block/by-name/persist            flags=backup=1;display="Persist";mounttodecrypt
 /persist_image   emmc    /dev/block/by-name/persist            flags=backup=1;display="Persist Image";flashimg=1
-/vbmeta		    emmc	/dev/block/by-name/vbmeta           flags=display="vbmeta";backup=1;flashimg=1;slotselect
+/vbmeta		       emmc	   /dev/block/by-name/vbmeta              flags=display="vbmeta";backup=1;flashimg=1;slotselect
 /vbmeta_system   emmc    /dev/block/by-name/vbmeta_system      flags=backup=1;display="vbmeta_system";flashimg=1;slotselect
 /vbmeta_vendor   emmc    /dev/block/by-name/vbmeta_vendor      flags=backup=1;display="vbmeta_vendor";flashimg=1;slotselect
 
