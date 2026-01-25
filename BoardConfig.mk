@@ -198,6 +198,7 @@ BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_NO_RECOVERY := true
 TW_HAS_NO_RECOVERY_PARTITION := true
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 
 # TWRP specific build flags
