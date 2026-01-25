@@ -1,19 +1,18 @@
 #fstab file by lopestom for Blackview BV9200_RU - BV9200_S1_221231 - R08_20221231
-/system		          ext4	/dev/block/mapper/system               flags=backup=1;wipeingui;slotselect;logical;display="System"
+# Images
+/system_image       emmc   /dev/block/mapper/system               flags=backup=1;display="System Image";slotselect;flashimg=1
+/vendor_image       emmc   /dev/block/mapper/vendor               flags=backup=1;display="Vendor Image";slotselect;flashimg=1
+/product_image      emmc   /dev/block/mapper/product              flags=backup=1;display="Product Image";slotselect;flashimg=1
+
+/system		          ext4	  /dev/block/mapper/system             flags=backup=1;wipeingui;slotselect;logical;display="System"
 /vendor             ext4    /dev/block/mapper/vendor             flags=backup=1;wipeingui;logical;display="Vendor";slotselect
 /product            ext4    /dev/block/mapper/product            flags=backup=1;wipeingui;logical;display="Product";slotselect
-
-# Images
-/system_image	      emmc  	/dev/block/mapper/system             flags=backup=1;flashimg=1;slotselect;logical;display="System_Image_a"
-/vendor_image	      emmc  	/dev/block/mapper/vendor             flags=backup=1;flashimg=1;slotselect;logical;display="Vendor_Image_a"
-/product_image	    emmc	/dev/block/mapper/product              flags=backup=1;flashimg=1;slotselect;logical;display="Product_Image_a"
 
 # Core Partitions
 /metadata           ext4    /dev/block/by-name/metadata         flags=backup=1;display="metadata";mounttodecrypt
 
 # Common partition
 /data            f2fs    /dev/block/by-name/userdata            flags=encryptable=/dev/block/by-name/metadata;fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
-/vendor_boot	emmc	/dev/block/by-name/vendor_boot		          flags=display="Vendor Boot";backup=1;flashimg=1;slotselect
 /boot            emmc    /dev/block/by-name/boot               flags=backup=1;display="Boot";flashimg=1;slotselect
 /dtbo            emmc    /dev/block/by-name/dtbo               flags=backup=1;display="Dtbo";flashimg=1;slotselect
 /persist         ext4    /dev/block/by-name/persist            flags=backup=1;display="Persist";mounttodecrypt
@@ -23,14 +22,14 @@
 /vbmeta_vendor   emmc    /dev/block/by-name/vbmeta_vendor      flags=backup=1;display="vbmeta_vendor";flashimg=1;slotselect
 
 # MediaTek partitions
-/bootloader      emmc    /dev/block/by-name/lk                 flags=backup=1;display="Bootloader (lk)";slotselect;flashimg=1
-/logo		    emmc	/dev/block/by-name/logo             flags=display="logo";backup=1;flashimg=1
-/expdb		    emmc	/dev/block/by-name/expdb             flags=display="expdb";backup=1
-/seccfg		    emmc	/dev/block/by-name/seccfg           flags=display="SecCfg";backup=1
-/para		    emmc	/dev/block/by-name/para             flags=display="para";backup=1;flashimg=1
-/misc		    emmc	/dev/block/by-name/misc             flags=display="misc";backup=1;flashimg=1
-/boot_para	    emmc	/dev/block/by-name/boot_para        flags=display="boot_para";backup=1
-/proinfo	    emmc	/dev/block/by-name/proinfo          flags=display="Proinfo";backup=1
+/bootloader      emmc   /dev/block/by-name/lk                 flags=backup=1;display="Bootloader (lk)";slotselect;flashimg=1
+/logo		         emmc	  /dev/block/by-name/logo             flags=display="logo";backup=1;flashimg=1
+/expdb		       emmc	  /dev/block/by-name/expdb             flags=display="expdb";backup=1
+/seccfg		       emmc	  /dev/block/by-name/seccfg           flags=display="SecCfg";backup=1
+/para		         emmc	  /dev/block/by-name/para             flags=display="para";backup=1;flashimg=1
+/misc		         emmc	  /dev/block/by-name/misc             flags=display="misc";backup=1;flashimg=1
+/boot_para	     emmc	  /dev/block/by-name/boot_para        flags=display="boot_para";backup=1
+/proinfo	       emmc	  /dev/block/by-name/proinfo          flags=display="Proinfo";backup=1
 
 # Non-Volatile (RAM | DATA | CFG)
 /nvcfg		    ext4	/dev/block/by-name/nvcfg            flags=display="NvCfg";backup=1
@@ -57,11 +56,6 @@
 # System Control Processor (SCP)
 /scp		    emmc	/dev/block/by-name/scp             flags=display="scp";backup=1;slotselect
 
-#VPU
-/cam_vpu1       emmc    /dev/block/by-name/cam_vpu1         flags=display="cam_vpu1";backup=1;slotselect
-/cam_vpu2       emmc    /dev/block/by-name/cam_vpu2         flags=display="cam_vpu2";backup=1;slotselect
-/cam_vpu3       emmc    /dev/block/by-name/cam_vpu3         flags=display="cam_vpu3";backup=1;slotselect
-
 #Mod lopestom about encrypt_decrypt data
 #/oemkeystore		emmc	/dev/block/by-name/oemkeystore
 #/keystore		emmc	/dev/block/by-name/keystore
@@ -75,4 +69,4 @@
 
 # External-Devices (SDCARD | OTG)
 /external_sd    auto     /dev/block/mmcblk0p1  /dev/block/mmcblk0    flags=display="External_SDcard";storage;wipeingui;removable;fsflags="utf8"
-/usbotg        auto     /dev/block/sdd1  /dev/block/sdd                     flags=display="Usb_Otg";storage;wipeingui;removable;fsflags="utf8"
+/usbotg        auto     /dev/block/sdd1  /dev/block/sdd               flags=display="Usb_Otg";storage;wipeingui;removable;fsflags="utf8"
