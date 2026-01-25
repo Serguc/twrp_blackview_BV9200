@@ -1,12 +1,12 @@
 #fstab file by lopestom for Blackview BV9200_RU - BV9200_S1_221231 - R08_20221231
-/system		          ext4	/dev/block/mapper/system               flags=backup=1;wipeingui;slotselect;logical;display="System"
-/vendor             ext4    /dev/block/mapper/vendor             flags=backup=1;wipeingui;logical;display="Vendor";slotselect
-/product            ext4    /dev/block/mapper/product            flags=backup=1;wipeingui;logical;display="Product";slotselect
+/system_image	      ext4	  /dev/block/mapper/system             flags=backup=1;slotselect;logical;display="System"
+/vendor_image       ext4    /dev/block/mapper/vendor             flags=backup=1;logical;display="Vendor";slotselect
+/product_image      ext4    /dev/block/mapper/product            flags=backup=1;logical;display="Product";slotselect
 
 # Images
-/system_image	      emmc  	/dev/block/mapper/system             flags=backup=1;flashimg=1;slotselect;logical;display="System_Image_a"
-/vendor_image	      emmc  	/dev/block/mapper/vendor             flags=backup=1;flashimg=1;slotselect;logical;display="Vendor_Image_a"
-/product_image	    emmc	/dev/block/mapper/product              flags=backup=1;flashimg=1;slotselect;logical;display="Product_Image_a"
+/system_image	      emmc  	/dev/block/mapper/system             flags=display="System";flashimg=1;slotselect;wipeingui
+/vendor_image	      emmc  	/dev/block/mapper/vendor             flags=display="Vendor";flashimg=1;slotselect;logical;
+/product_image	    emmc	/dev/block/mapper/product              flags=display="Product";flashimg=1;slotselect;logical;
 
 # Core Partitions
 /metadata           ext4    /dev/block/by-name/metadata         flags=backup=1;display="metadata";mounttodecrypt
